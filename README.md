@@ -1,2 +1,2 @@
 # Algorithms
-This repository is built for all projects in Princiton's Algorithms.
+This repository is built for all projects in Princiton's *Algorithms*.
