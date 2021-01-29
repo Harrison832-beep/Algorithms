@@ -41,9 +41,9 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
-  <component name="RunManager" selected="JUnit.BaseballEliminationTest.testfields">
+  <component name="RunManager" selected="JUnit.BaseballEliminationTest">
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -93,35 +93,51 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BaseballEliminationTest.testfields" />
         <item itemvalue="JUnit.BaseballEliminationTest" />
+        <item itemvalue="JUnit.BaseballEliminationTest.testfields" />
       </list>
     </recent_temporary>
   </component>
   <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1611931132382">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611931132382" />
+    <state x="767" y="164" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog" timestamp="1611926376173">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="767" y="164" key="#com.intellij.ide.ui.customization.CustomizableActionsPanel.FindAvailableActionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611926376173" />
     <state x="634" y="260" key="FileChooserDialogImpl" timestamp="1611845069548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="634" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611845069548" />
-    <state width="1921" height="298" key="GridCell.Tab.0.bottom" timestamp="1611853281730">
+    <state width="1921" height="298" key="GridCell.Tab.0.bottom" timestamp="1611937411746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611853281730" />
-    <state width="1921" height="298" key="GridCell.Tab.0.center" timestamp="1611853281730">
+    <state width="1921" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611937411746" />
+    <state width="1921" height="298" key="GridCell.Tab.0.center" timestamp="1611937411746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611853281730" />
-    <state width="1921" height="298" key="GridCell.Tab.0.left" timestamp="1611853281729">
+    <state width="1921" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611937411746" />
+    <state width="1921" height="298" key="GridCell.Tab.0.left" timestamp="1611937411746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611853281729" />
-    <state width="1921" height="298" key="GridCell.Tab.0.right" timestamp="1611853281730">
+    <state width="1921" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611937411746" />
+    <state width="1921" height="298" key="GridCell.Tab.0.right" timestamp="1611937411746">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611853281730" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1611849231433">
+    <state width="1921" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611937411746" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1611926379111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611849231433" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1611926379111" />
+    <state x="666" y="277" key="refactoring.ChangeSignatureDialog" timestamp="1611936724383">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="666" y="277" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611936724383" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611926186713">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611926186713" />
   </component>
 </project>

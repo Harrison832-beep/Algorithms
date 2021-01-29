@@ -1,6 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,61 +17,80 @@ class BaseballEliminationTest {
 
         assertEquals(b.numberOfTeams(), 4);
 
-        ArrayList<String> teams = (ArrayList<String>) b.teams();
-        assertNotNull(teams);
-        assertEquals(teams.get(0), "Atlanta");
-        assertEquals(teams.get(1), "Philadelphia");
-        assertEquals(teams.get(2), "New_York");
-        assertEquals(teams.get(3), "Montreal");
+        for (String team : b.teams()) {
+            StdOut.println(team);
+        }
 
-        assertEquals(b.wins("Atlanta"), 83);
-        assertEquals(b.wins("Philadelphia"), 80);
-        assertEquals(b.wins("New_York"), 78);
-        assertEquals(b.wins("Montreal"), 77);
 
-        assertEquals(b.losses("Atlanta"), 71);
-        assertEquals(b.losses("Philadelphia"), 79);
-        assertEquals(b.losses("New_York"), 78);
-        assertEquals(b.losses("Montreal"), 82);
+        assertEquals(83, b.wins("Atlanta"));
+        assertEquals(80, b.wins("Philadelphia"));
+        assertEquals(78, b.wins("New_York"));
+        assertEquals(77, b.wins("Montreal"));
 
-        assertEquals(b.remaining("Atlanta"), 8);
-        assertEquals(b.remaining("Philadelphia"), 3);
-        assertEquals(b.remaining("New_York"), 6);
-        assertEquals(b.remaining("Montreal"), 3);
+        assertEquals(71, b.losses("Atlanta"));
+        assertEquals(79, b.losses("Philadelphia"));
+        assertEquals(78, b.losses("New_York"));
+        assertEquals(82, b.losses("Montreal"));
 
-        assertEquals(b.against("Atlanta", "Atlanta"), 0);
-        assertEquals(b.against("Atlanta", "Philadelphia"), 1);
-        assertEquals(b.against("Atlanta", "New_York"), 6);
-        assertEquals(b.against("Atlanta", "Montreal"), 1);
+        assertEquals(8, b.remaining("Atlanta"));
+        assertEquals(3, b.remaining("Philadelphia"));
+        assertEquals(6, b.remaining("New_York"));
+        assertEquals(3, b.remaining("Montreal"));
+
+        assertEquals(0, b.against("Atlanta", "Atlanta"));
+        assertEquals(1, b.against("Atlanta", "Philadelphia"));
+        assertEquals(6, b.against("Atlanta", "New_York"));
+        assertEquals(1, b.against("Atlanta", "Montreal"));
     }
 
+    @Test
     public void testIsEliminated_teams4() {
         BaseballElimination b = new BaseballElimination("testfiles/teams4.txt");
 
         assertFalse(b.isEliminated("Atlanta"));
-        assertFalse(b.isEliminated("Philadelphia"));
+        assertTrue(b.isEliminated("Philadelphia"));
         assertFalse(b.isEliminated("New_York"));
         assertTrue(b.isEliminated("Montreal"));
     }
 
+    @Test
     // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
     public void testCertificateOfElimination_teams4() {
         BaseballElimination b = new BaseballElimination("testfiles/teams4.txt");
 
         assertNull(b.certificationOfElimination("Atlanta"));
-        assertNull(b.certificationOfElimination("Philadelphia"));
-        assertNull(b.certificationOfElimination("New_York"));
-        Iterable<String> certificates2 = b.certificationOfElimination("Montreal");
 
-        int wins = 0;
-        int games = 0;
-        for (String team1 : certificates2) {
-            wins += b.wins(team1);
+        Iterable<String> certificates1 = b.certificationOfElimination("Philadelphia");
 
-            for (String team2 : certificates2) {
-                games += b.against(team1, team2);
+        int wins1 = 0;
+        int games1 = 0;
+        int R1 = 0;
+        for (String team1 : certificates1) {
+            wins1 += b.wins(team1);
+            R1++;
+            for (String team2 : certificates1) {
+                games1 += b.against(team1, team2);
             }
         }
+
+        assertTrue((wins1 + games1) / Math.abs(R1) > (b.wins("Philadelphia") + b.remaining("Philadelphia")));
+
+        assertNull(b.certificationOfElimination("New_York"));
+
+        Iterable<String> certificates2 = b.certificationOfElimination("Montreal");
+
+        int wins2 = 0;
+        int games2 = 0;
+        int R2 = 0;
+        for (String team1 : certificates2) {
+            wins2 += b.wins(team1);
+            R2++;
+            for (String team2 : certificates2) {
+                games2 += b.against(team1, team2);
+            }
+        }
+
+        assertTrue((wins2 + games2) / Math.abs(R2) > (b.wins("Montreal") + b.remaining("Montreal")));
 
 
     }
