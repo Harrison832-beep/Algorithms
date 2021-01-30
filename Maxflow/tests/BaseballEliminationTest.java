@@ -1,4 +1,3 @@
-import edu.princeton.cs.algs4.StdOut;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,11 +15,6 @@ class BaseballEliminationTest {
         BaseballElimination b = new BaseballElimination("testfiles/teams4.txt");
 
         assertEquals(b.numberOfTeams(), 4);
-
-        for (String team : b.teams()) {
-            StdOut.println(team);
-        }
-
 
         assertEquals(83, b.wins("Atlanta"));
         assertEquals(80, b.wins("Philadelphia"));
@@ -54,6 +48,61 @@ class BaseballEliminationTest {
     }
 
     @Test
+    public void testIsEliminated_teams4a() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams4a.txt");
+
+        assertFalse(b.isEliminated("CIA"));
+        assertTrue(b.isEliminated("Ghaddafi"));
+        assertTrue(b.isEliminated("Bin_Ladin"));
+        assertFalse(b.isEliminated("Obama"));
+    }
+
+    @Test
+    public void testIsEliminated_teams5() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams5.txt");
+
+        assertFalse(b.isEliminated("New_York"));
+        assertFalse(b.isEliminated("Baltimore"));
+        assertFalse(b.isEliminated("Boston"));
+        assertFalse(b.isEliminated("Toronto"));
+        assertTrue(b.isEliminated("Detroit"));
+    }
+
+    @Test
+    public void testIsEliminated_teams7() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams7.txt");
+
+        assertFalse(b.isEliminated("U.S.A."));
+        assertFalse(b.isEliminated("England"));
+        assertFalse(b.isEliminated("France"));
+        assertFalse(b.isEliminated("Germany"));
+        assertTrue(b.isEliminated("Ireland"));
+        assertFalse(b.isEliminated("Belgium"));
+        assertTrue(b.isEliminated("China"));
+    }
+
+    private double a(BaseballElimination b, Iterable<String> R) {
+        int wins = 0;
+        int games = 0;
+        int RSize = 0;
+        for (String team1 : R) {
+            wins += b.wins(team1);
+            RSize++;
+            for (String team2 : R) {
+                games += b.against(team1, team2);
+            }
+        }
+
+        return (wins + games) / Math.abs(RSize);
+    }
+
+    private String peek(Iterable<String> R) {
+        for (String team : R)
+            return team;
+        return null;
+    }
+
+    @Test
     // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
     public void testCertificateOfElimination_teams4() {
         BaseballElimination b = new BaseballElimination("testfiles/teams4.txt");
@@ -61,37 +110,14 @@ class BaseballEliminationTest {
         assertNull(b.certificationOfElimination("Atlanta"));
 
         Iterable<String> certificates1 = b.certificationOfElimination("Philadelphia");
-
-        int wins1 = 0;
-        int games1 = 0;
-        int R1 = 0;
-        for (String team1 : certificates1) {
-            wins1 += b.wins(team1);
-            R1++;
-            for (String team2 : certificates1) {
-                games1 += b.against(team1, team2);
-            }
-        }
-
-        assertTrue((wins1 + games1) / Math.abs(R1) > (b.wins("Philadelphia") + b.remaining("Philadelphia")));
+        assertTrue(a(b, certificates1) > (b.wins("Philadelphia") + b.remaining("Philadelphia")));
 
         assertNull(b.certificationOfElimination("New_York"));
 
         Iterable<String> certificates2 = b.certificationOfElimination("Montreal");
-
-        int wins2 = 0;
-        int games2 = 0;
-        int R2 = 0;
-        for (String team1 : certificates2) {
-            wins2 += b.wins(team1);
-            R2++;
-            for (String team2 : certificates2) {
-                games2 += b.against(team1, team2);
-            }
-        }
-
-        assertTrue((wins2 + games2) / Math.abs(R2) > (b.wins("Montreal") + b.remaining("Montreal")));
-
-
+        String firstItem = peek(certificates2);
+        assertEquals(firstItem, "Atlanta");
     }
+
+
 }

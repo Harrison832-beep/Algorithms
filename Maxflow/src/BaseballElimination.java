@@ -1,7 +1,4 @@
-import edu.princeton.cs.algs4.FlowEdge;
-import edu.princeton.cs.algs4.FlowNetwork;
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.*;
 
 import java.util.HashMap;
 
@@ -39,7 +36,7 @@ import java.util.HashMap;
 public class BaseballElimination {
     private final int numberOfTeams;
     private final HashMap<String, Integer> teams;
-    private final int[][] g;
+    private final int[][] games;
     private final int[] wins;
     private final int[] losses;
     private final int[] remains;
@@ -53,7 +50,7 @@ public class BaseballElimination {
         In in = new In(filename);
         this.numberOfTeams = in.readInt();
         this.teams = new HashMap<>();
-        this.g = new int[numberOfTeams][numberOfTeams];
+        this.games = new int[numberOfTeams][numberOfTeams];
         this.wins = new int[numberOfTeams];
         this.losses = new int[numberOfTeams];
         this.remains = new int[numberOfTeams];
@@ -66,7 +63,7 @@ public class BaseballElimination {
             this.remains[i] = in.readInt(); // left
 
             for (int j = 0; j < numberOfTeams; j++) {
-                g[i][j] = in.readInt();
+                games[i][j] = in.readInt();
             }
 
             i++;
@@ -134,38 +131,74 @@ public class BaseballElimination {
     public int against(String team1, String team2) {
         int inx1 = teams.get(team1);
         int inx2 = teams.get(team2);
-        return g[inx1][inx2];
+        return games[inx1][inx2];
     }
 
     /**
      * Is given team eliminated?
+     * If all edges in the maxflow that are pointing from s are full,
+     * then this corresponds to assigning winners to all of the remaining games in such a way that no team wins more games than x (given team).
+     * If some edges pointing from s are not full, then there is no scenario in which team x can win the division.
      *
      * @param team String representation of a team
      * @return boolean if the team is eliminated
      */
     public boolean isEliminated(String team) {
-        constructFordFulkerson(teams.get(team));
-        return false;
-    }
+        // See if trivial first
+        if (trivialElimination(team))
+            return true;
 
-    private void constructFordFulkerson(int teamInx) {
-        int v = 1;
-        int s = 0;
-        int V = combinations(numberOfTeams - 1, 2) + numberOfTeams - 1 + 2; // Combinations, teams, s, t (exclude given team)
-        int t = V - 1;
-        FlowNetwork G = new FlowNetwork(V);
-
-        StdOut.println(t);
-
-        for (int i = 0; i < numberOfTeams - 1; i++) {
-            for (int j = i + 1; j < numberOfTeams - 1; j++) {
-                FlowEdge e = new FlowEdge(s, v, g[i][j]);
-                G.addEdge(e);
-                // TODO connect game between teams to teams
+        int teamInx = teams.get(team);
+        FordFulkerson fordFulkerson = getFordFulkerson(teamInx);
+        double edgesValue = 0.0;
+        for (int i = 0; i < numberOfTeams; i++) {
+            if (i == teamInx) continue;
+            for (int j = i + 1; j < numberOfTeams; j++) {
+                if (j == teamInx) continue;
+                edgesValue += games[i][j];
             }
         }
 
+        // StdOut.println("teamInx: " + teamInx);
+        // StdOut.println(edgesValue + " : " + fordFulkerson.value());
+        return edgesValue > fordFulkerson.value();
+    }
 
+    private boolean trivialElimination(String team) {
+        int teamInx = teams.get(team);
+        for (String t : teams.keySet()) {
+            if (t.equals(team)) continue;
+
+            int i = teams.get(t);
+            if (wins[teamInx] + remains[teamInx] < wins[i])
+                return true;
+        }
+
+        return false;
+    }
+
+    private FordFulkerson getFordFulkerson(int teamInx) {
+        int v = numberOfTeams;
+        int V = combinations(numberOfTeams - 1, 2) + numberOfTeams + 2; // Combinations, teams, s, t (exclude given team)
+        int s = V - 2;
+        int t = V - 1;
+        FlowNetwork G = new FlowNetwork(V);
+
+        for (int i = 0; i < numberOfTeams; i++) {
+            if (i == teamInx) continue;
+            FlowEdge sink2team = new FlowEdge(i, t, wins[teamInx] + remains[teamInx] - wins[i]);
+            G.addEdge(sink2team);
+
+            for (int j = i + 1; j < numberOfTeams; j++) {
+                if (j == teamInx) continue;
+                G.addEdge(new FlowEdge(v, i, Double.POSITIVE_INFINITY));
+                G.addEdge(new FlowEdge(v, j, Double.POSITIVE_INFINITY));
+                G.addEdge(new FlowEdge(s, v, games[i][j]));
+                v++;
+            }
+        }
+        // StdOut.println(G);
+        return new FordFulkerson(G, s, t);
     }
 
     private int combinations(int n, int k) {
@@ -187,6 +220,39 @@ public class BaseballElimination {
      * @return Iterable contains all teams that eliminates given team
      */
     public Iterable<String> certificationOfElimination(String team) {
+
+        if (trivialElimination(team))
+            return trivialCertificate(team);
+
+        Bag<String> certifications = new Bag<>();
+        int teamInx = teams.get(team);
+        FordFulkerson fordFulkerson = getFordFulkerson(teamInx);
+        for (String t : teams.keySet()) {
+            if (t.equals(team)) continue;
+
+            int i = teams.get(t);
+            if (fordFulkerson.inCut(i))
+                certifications.add(t);
+        }
+
+        if (certifications.isEmpty())
+            return null;
+        return certifications;
+    }
+
+    private Iterable<String> trivialCertificate(String team) {
+        Bag<String> certifications = new Bag<>();
+        int teamInx = teams.get(team);
+        for (String t : teams.keySet()) {
+            if (t.equals(team)) continue;
+
+            int i = teams.get(t);
+            if (wins[teamInx] + remains[teamInx] < wins[i]) {
+                certifications.add(t);
+                return certifications;
+            }
+        }
+
         return null;
     }
 
