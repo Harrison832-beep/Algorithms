@@ -1,6 +1,5 @@
 import edu.princeton.cs.algs4.*;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 
 /************************************************************************************
@@ -218,20 +217,19 @@ public class BaseballElimination {
     }
 
     private int combinations(int n, int k) {
-        BigInteger bigNfac = factorial(n);
-        BigInteger bigKfac = factorial(k);
-        BigInteger bigNKfac = factorial(n - k);
 
-        BigInteger result = bigNfac.divide(bigKfac).divide(bigNKfac);
-        return result.intValue();
+        int facN = factorial(n, n - k);
+        int facK = factorial(k, 1);
+
+        return facN / facK;
     }
 
-    private BigInteger factorial(int n) {
-        BigInteger fac = BigInteger.ONE;
+    private int factorial(int n, int end) {
+        int fac = 1;
 
-        for (int i = 1; i <= n; i++)
-            fac = fac.multiply(BigInteger.valueOf(i));
-        assert fac.compareTo(BigInteger.ONE) >= 0;
+        for (int i = n; i >= end; i--)
+            fac = fac * i;
+        assert fac >= 1;
 
         return fac;
     }
@@ -242,7 +240,7 @@ public class BaseballElimination {
      * @param team String representation of a team
      * @return Iterable contains all teams that eliminates given team
      */
-    public Iterable<String> certificationOfElimination(String team) {
+    public Iterable<String> certificateOfElimination(String team) {
         validateTeam(team);
 
         if (trivialElimination(team))
@@ -291,7 +289,7 @@ public class BaseballElimination {
         for (String team : division.teams()) {
             if (division.isEliminated(team)) {
                 StdOut.print(team + " is eliminated by the subset R = { ");
-                for (String t : division.certificationOfElimination(team)) {
+                for (String t : division.certificateOfElimination(team)) {
                     StdOut.print(t + " ");
                 }
                 StdOut.println("}");

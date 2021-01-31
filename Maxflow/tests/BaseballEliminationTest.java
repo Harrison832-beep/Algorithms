@@ -157,14 +157,14 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams4() {
         BaseballElimination b = new BaseballElimination("testfiles/teams4.txt");
 
-        assertNull(b.certificationOfElimination("Atlanta"));
+        assertNull(b.certificateOfElimination("Atlanta"));
 
-        Iterable<String> certificates1 = b.certificationOfElimination("Philadelphia");
+        Iterable<String> certificates1 = b.certificateOfElimination("Philadelphia");
         assertTrue(a(b, certificates1) > (b.wins("Philadelphia") + b.remaining("Philadelphia")));
 
-        assertNull(b.certificationOfElimination("New_York"));
+        assertNull(b.certificateOfElimination("New_York"));
 
-        Iterable<String> certificates2 = b.certificationOfElimination("Montreal");
+        Iterable<String> certificates2 = b.certificateOfElimination("Montreal");
         String firstItem = peek(certificates2);
         assertEquals(firstItem, "Atlanta");
     }
@@ -174,7 +174,7 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams5() {
         BaseballElimination b = new BaseballElimination("testfiles/teams5.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Detroit");
+        Iterable<String> certificates = b.certificateOfElimination("Detroit");
         assertTrue(a(b, certificates) > (b.wins("Detroit") + b.remaining("Detroit")));
     }
 
@@ -183,7 +183,7 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams7() {
         BaseballElimination b = new BaseballElimination("testfiles/teams7.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Ireland");
+        Iterable<String> certificates = b.certificateOfElimination("Ireland");
         assertTrue(a(b, certificates) > (b.wins("Ireland") + b.remaining("Ireland")));
     }
 
@@ -192,7 +192,7 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams24() {
         BaseballElimination b = new BaseballElimination("testfiles/teams24.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team13");
+        Iterable<String> certificates = b.certificateOfElimination("Team13");
         assertTrue(a(b, certificates) > (b.wins("Team13") + b.remaining("Team13")));
     }
 
@@ -201,10 +201,10 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams32() {
         BaseballElimination b = new BaseballElimination("testfiles/teams32.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team25");
+        Iterable<String> certificates = b.certificateOfElimination("Team25");
         assertTrue(a(b, certificates) > (b.wins("Team25") + b.remaining("Team25")));
 
-        certificates = b.certificationOfElimination("Team29");
+        certificates = b.certificateOfElimination("Team29");
         assertTrue(a(b, certificates) > (b.wins("Team29") + b.remaining("Team29")));
     }
 
@@ -213,7 +213,7 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams36() {
         BaseballElimination b = new BaseballElimination("testfiles/teams36.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team21");
+        Iterable<String> certificates = b.certificateOfElimination("Team21");
         assertTrue(a(b, certificates) > (b.wins("Team21") + b.remaining("Team21")));
     }
 
@@ -222,13 +222,13 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams42() {
         BaseballElimination b = new BaseballElimination("testfiles/teams42.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team6");
+        Iterable<String> certificates = b.certificateOfElimination("Team6");
         assertTrue(a(b, certificates) > (b.wins("Team6") + b.remaining("Team6")));
 
-        certificates = b.certificationOfElimination("Team15");
+        certificates = b.certificateOfElimination("Team15");
         assertTrue(a(b, certificates) > (b.wins("Team15") + b.remaining("Team15")));
 
-        certificates = b.certificationOfElimination("Team25");
+        certificates = b.certificateOfElimination("Team25");
         assertTrue(a(b, certificates) > (b.wins("Team25") + b.remaining("Team25")));
     }
 
@@ -237,13 +237,13 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams48() {
         BaseballElimination b = new BaseballElimination("testfiles/teams48.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team6");
+        Iterable<String> certificates = b.certificateOfElimination("Team6");
         assertTrue(a(b, certificates) > (b.wins("Team6") + b.remaining("Team6")));
 
-        certificates = b.certificationOfElimination("Team23");
+        certificates = b.certificateOfElimination("Team23");
         assertTrue(a(b, certificates) > (b.wins("Team23") + b.remaining("Team23")));
 
-        certificates = b.certificationOfElimination("Team47");
+        certificates = b.certificateOfElimination("Team47");
         assertTrue(a(b, certificates) > (b.wins("Team47") + b.remaining("Team47")));
     }
 
@@ -252,16 +252,16 @@ class BaseballEliminationTest {
     public void testCertificateOfElimination_teams54() {
         BaseballElimination b = new BaseballElimination("testfiles/teams54.txt");
 
-        Iterable<String> certificates = b.certificationOfElimination("Team3");
+        Iterable<String> certificates = b.certificateOfElimination("Team3");
         assertTrue(a(b, certificates) > (b.wins("Team3") + b.remaining("Team3")));
 
-        certificates = b.certificationOfElimination("Team29");
+        certificates = b.certificateOfElimination("Team29");
         assertTrue(a(b, certificates) > (b.wins("Team29") + b.remaining("Team29")));
 
-        certificates = b.certificationOfElimination("Team37");
+        certificates = b.certificateOfElimination("Team37");
         assertTrue(a(b, certificates) > (b.wins("Team37") + b.remaining("Team37")));
 
-        certificates = b.certificationOfElimination("Team50");
+        certificates = b.certificateOfElimination("Team50");
         assertTrue(a(b, certificates) > (b.wins("Team50") + b.remaining("Team50")));
     }
 
