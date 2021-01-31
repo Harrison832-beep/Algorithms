@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.*;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 /************************************************************************************
@@ -95,6 +96,8 @@ public class BaseballElimination {
      * @return number of wins of that team
      */
     public int wins(String team) {
+        validateTeam(team);
+
         int teamIndex = teams.get(team);
         return wins[teamIndex];
     }
@@ -106,6 +109,8 @@ public class BaseballElimination {
      * @return number of losses of that team
      */
     public int losses(String team) {
+        validateTeam(team);
+
         int teamIndex = teams.get(team);
         return losses[teamIndex];
     }
@@ -117,6 +122,8 @@ public class BaseballElimination {
      * @return number of remaining games of that team
      */
     public int remaining(String team) {
+        validateTeam(team);
+
         int teamIndex = teams.get(team);
         return remains[teamIndex];
     }
@@ -129,6 +136,9 @@ public class BaseballElimination {
      * @return number of remaining games between team1 and team2
      */
     public int against(String team1, String team2) {
+        validateTeam(team1);
+        validateTeam(team2);
+
         int inx1 = teams.get(team1);
         int inx2 = teams.get(team2);
         return games[inx1][inx2];
@@ -144,6 +154,8 @@ public class BaseballElimination {
      * @return boolean if the team is eliminated
      */
     public boolean isEliminated(String team) {
+        validateTeam(team);
+
         // See if trivial first
         if (trivialElimination(team))
             return true;
@@ -165,6 +177,8 @@ public class BaseballElimination {
     }
 
     private boolean trivialElimination(String team) {
+        validateTeam(team);
+
         int teamInx = teams.get(team);
         for (String t : teams.keySet()) {
             if (t.equals(team)) continue;
@@ -180,6 +194,8 @@ public class BaseballElimination {
     private FordFulkerson getFordFulkerson(int teamInx) {
         int v = numberOfTeams;
         int V = combinations(numberOfTeams - 1, 2) + numberOfTeams + 2; // Combinations, teams, s, t (exclude given team)
+        // StdOut.println(numberOfTeams);
+        // StdOut.println(combinations(numberOfTeams - 1, 2));
         int s = V - 2;
         int t = V - 1;
         FlowNetwork G = new FlowNetwork(V);
@@ -202,14 +218,21 @@ public class BaseballElimination {
     }
 
     private int combinations(int n, int k) {
-        return factorial(n) / (factorial(k) * factorial(n - k));
+        BigInteger bigNfac = factorial(n);
+        BigInteger bigKfac = factorial(k);
+        BigInteger bigNKfac = factorial(n - k);
+
+        BigInteger result = bigNfac.divide(bigKfac).divide(bigNKfac);
+        return result.intValue();
     }
 
-    private int factorial(int n) {
-        int fac = 1;
+    private BigInteger factorial(int n) {
+        BigInteger fac = BigInteger.ONE;
 
         for (int i = 1; i <= n; i++)
-            fac *= i;
+            fac = fac.multiply(BigInteger.valueOf(i));
+        assert fac.compareTo(BigInteger.ONE) >= 0;
+
         return fac;
     }
 
@@ -220,6 +243,7 @@ public class BaseballElimination {
      * @return Iterable contains all teams that eliminates given team
      */
     public Iterable<String> certificationOfElimination(String team) {
+        validateTeam(team);
 
         if (trivialElimination(team))
             return trivialCertificate(team);
@@ -262,7 +286,6 @@ public class BaseballElimination {
     }
 
     public static void main(String[] args) {
-        /*
         BaseballElimination division = new BaseballElimination(args[0]);
 
         for (String team : division.teams()) {
@@ -271,11 +294,11 @@ public class BaseballElimination {
                 for (String t : division.certificationOfElimination(team)) {
                     StdOut.print(t + " ");
                 }
+                StdOut.println("}");
             } else {
                 StdOut.println(team + " is not eliminated");
             }
         }
-         */
     }
 
 }

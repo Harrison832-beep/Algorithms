@@ -81,6 +81,56 @@ class BaseballEliminationTest {
         assertTrue(b.isEliminated("China"));
     }
 
+    @Test
+    public void testIsEliminated_teams24() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams24.txt");
+
+        assertTrue(b.isEliminated("Team13"));
+    }
+
+    @Test
+    public void testIsEliminated_teams32() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams32.txt");
+
+        assertTrue(b.isEliminated("Team25"));
+        assertTrue(b.isEliminated("Team29"));
+    }
+
+    @Test
+    public void testIsEliminated_teams36() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams36.txt");
+
+        assertTrue(b.isEliminated("Team21"));
+    }
+
+    @Test
+    public void testIsEliminated_teams42() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams42.txt");
+
+        assertTrue(b.isEliminated("Team6"));
+        assertTrue(b.isEliminated("Team15"));
+        assertTrue(b.isEliminated("Team25"));
+    }
+
+    @Test
+    public void testIsEliminated_teams48() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams48.txt");
+
+        assertTrue(b.isEliminated("Team6"));
+        assertTrue(b.isEliminated("Team23"));
+        assertTrue(b.isEliminated("Team47"));
+    }
+
+    @Test
+    public void testIsEliminated_teams54() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams54.txt");
+
+        assertTrue(b.isEliminated("Team3"));
+        assertTrue(b.isEliminated("Team29"));
+        assertTrue(b.isEliminated("Team37"));
+        assertTrue(b.isEliminated("Team50"));
+    }
+
     private double a(BaseballElimination b, Iterable<String> R) {
         int wins = 0;
         int games = 0;
@@ -93,7 +143,7 @@ class BaseballEliminationTest {
             }
         }
 
-        return (wins + games) / Math.abs(RSize);
+        return (double) (wins + games) / Math.abs(RSize);
     }
 
     private String peek(Iterable<String> R) {
@@ -119,5 +169,100 @@ class BaseballEliminationTest {
         assertEquals(firstItem, "Atlanta");
     }
 
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams5() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams5.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Detroit");
+        assertTrue(a(b, certificates) > (b.wins("Detroit") + b.remaining("Detroit")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams7() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams7.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Ireland");
+        assertTrue(a(b, certificates) > (b.wins("Ireland") + b.remaining("Ireland")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams24() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams24.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team13");
+        assertTrue(a(b, certificates) > (b.wins("Team13") + b.remaining("Team13")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams32() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams32.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team25");
+        assertTrue(a(b, certificates) > (b.wins("Team25") + b.remaining("Team25")));
+
+        certificates = b.certificationOfElimination("Team29");
+        assertTrue(a(b, certificates) > (b.wins("Team29") + b.remaining("Team29")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams36() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams36.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team21");
+        assertTrue(a(b, certificates) > (b.wins("Team21") + b.remaining("Team21")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams42() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams42.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team6");
+        assertTrue(a(b, certificates) > (b.wins("Team6") + b.remaining("Team6")));
+
+        certificates = b.certificationOfElimination("Team15");
+        assertTrue(a(b, certificates) > (b.wins("Team15") + b.remaining("Team15")));
+
+        certificates = b.certificationOfElimination("Team25");
+        assertTrue(a(b, certificates) > (b.wins("Team25") + b.remaining("Team25")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams48() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams48.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team6");
+        assertTrue(a(b, certificates) > (b.wins("Team6") + b.remaining("Team6")));
+
+        certificates = b.certificationOfElimination("Team23");
+        assertTrue(a(b, certificates) > (b.wins("Team23") + b.remaining("Team23")));
+
+        certificates = b.certificationOfElimination("Team47");
+        assertTrue(a(b, certificates) > (b.wins("Team47") + b.remaining("Team47")));
+    }
+
+    @Test
+    // a(R) = (w(R) + g(R)) / |R| should be greater than w(x) + r(x), where x is the team eliminated
+    public void testCertificateOfElimination_teams54() {
+        BaseballElimination b = new BaseballElimination("testfiles/teams54.txt");
+
+        Iterable<String> certificates = b.certificationOfElimination("Team3");
+        assertTrue(a(b, certificates) > (b.wins("Team3") + b.remaining("Team3")));
+
+        certificates = b.certificationOfElimination("Team29");
+        assertTrue(a(b, certificates) > (b.wins("Team29") + b.remaining("Team29")));
+
+        certificates = b.certificationOfElimination("Team37");
+        assertTrue(a(b, certificates) > (b.wins("Team37") + b.remaining("Team37")));
+
+        certificates = b.certificationOfElimination("Team50");
+        assertTrue(a(b, certificates) > (b.wins("Team50") + b.remaining("Team50")));
+    }
 
 }
