@@ -17,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -38,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../algs4.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -48,11 +49,14 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
     </configuration>
+    <configuration name="TST" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="TST" />
+      <module name="Exercises" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
@@ -63,13 +67,37 @@
     </configuration>
   </component>
   <component name="WindowStateProjectService">
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1612786009639">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1612786009639" />
     <state x="666" y="259" key="FileChooserDialogImpl" timestamp="1612701327963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="259" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1612701327963" />
-    <state x="440" y="92" key="SettingsEditor" timestamp="1612701331049">
+    <state width="1516" height="287" key="GridCell.Tab.0.bottom" timestamp="1612793254419">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1516" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612793254419" />
+    <state width="1882" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612791527359" />
+    <state width="1516" height="287" key="GridCell.Tab.0.center" timestamp="1612793254418">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1516" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
+    <state width="1882" height="287" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612791527359" />
+    <state width="1516" height="287" key="GridCell.Tab.0.left" timestamp="1612793254418">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1516" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
+    <state width="1882" height="287" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612791527359" />
+    <state width="1516" height="287" key="GridCell.Tab.0.right" timestamp="1612793254418">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1516" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
+    <state width="1882" height="287" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612791527359" />
+    <state x="440" y="92" key="SettingsEditor" timestamp="1612786365394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="92" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1612701331049" />
+    <state x="440" y="92" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1612786365394" />
   </component>
 </project>

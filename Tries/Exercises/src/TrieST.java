@@ -1,4 +1,4 @@
-public class TrieST<Value> {
+public class TrieST<Value> implements StringST<Value> {
     private static final int R = 256;
 
     private Node root = new Node();
