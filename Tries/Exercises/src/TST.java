@@ -1,4 +1,4 @@
-public class TST<Value> implements StringST<Value> {
+public class TST<Value> {
     private Node root = null;
 
     private class Node {
