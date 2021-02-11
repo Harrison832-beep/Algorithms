@@ -52,6 +52,7 @@
     <configuration name="BookIndexer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="BookIndexer" />
       <module name="Exercises" />
+      <option name="PROGRAM_PARAMETERS" value="src/IndexBook.txt" />
       <method v="2" />
     </configuration>
     <configuration name="TST" type="Application" factoryName="Application">
@@ -72,6 +73,10 @@
     </configuration>
   </component>
   <component name="WindowStateProjectService">
+    <state x="717" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1612967355105">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="717" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1612967355105" />
     <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1612786009639">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -84,26 +89,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="259" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1612701327963" />
-    <state width="1921" height="298" key="GridCell.Tab.0.bottom" timestamp="1612886511490">
+    <state width="1899" height="298" key="GridCell.Tab.0.bottom" timestamp="1612972161882">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1516" height="287" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612793254419" />
-    <state width="1921" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612886511490" />
-    <state width="1921" height="298" key="GridCell.Tab.0.center" timestamp="1612886511490">
+    <state width="1899" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612972161882" />
+    <state width="1899" height="298" key="GridCell.Tab.0.center" timestamp="1612972161882">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1516" height="287" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
-    <state width="1921" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612886511490" />
-    <state width="1921" height="298" key="GridCell.Tab.0.left" timestamp="1612886511490">
+    <state width="1899" height="298" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612972161882" />
+    <state width="1899" height="298" key="GridCell.Tab.0.left" timestamp="1612972161882">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1516" height="287" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
-    <state width="1921" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612886511490" />
-    <state width="1921" height="298" key="GridCell.Tab.0.right" timestamp="1612886511490">
+    <state width="1899" height="298" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612972161882" />
+    <state width="1899" height="298" key="GridCell.Tab.0.right" timestamp="1612972161882">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1516" height="287" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612793254418" />
-    <state width="1921" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612886511490" />
+    <state width="1899" height="298" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612972161882" />
     <state x="440" y="92" key="SettingsEditor" timestamp="1612786365394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
